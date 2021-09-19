@@ -1,1 +1,12 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.header-title {
+  margin-left: 10px;
+}
+
+.basket {
+  text-decoration: none;
+}
+
+.basket i {
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */
