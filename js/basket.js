@@ -12,7 +12,7 @@ function RetrieveBasket() {
         return JSON.parse(basket_storage);
     }
     else {
-        return null;
+        return [];
     }
 }
 
@@ -49,10 +49,15 @@ window.onload = function () {
     const total_product_el = document.getElementById("total-product")
     const form = document.getElementById("final-form");
 
+    if (basket.length == 0)
+    {
+        alert("Vous n'avez aucun produit dans votre panier");
+        location.href = "./";
+    }
+
     total_product_el.innerText = basket.length;
     total_price_el.innerText = formatter.format(GetTotalPrice(basket));
     basket_el.innerHTML = GenerateBasket(basket) + basket_el.innerHTML;
-
 
     form.onsubmit = function (e) {
         e.preventDefault();
