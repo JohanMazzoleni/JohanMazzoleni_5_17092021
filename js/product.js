@@ -72,10 +72,9 @@ window.onload = async function () {
 	document.getElementById("add-to-basket").onclick = function () {
 		AddToBasket({
 			name: product_details.name,
-			description: product_details.description,
-			price: product_details.price,
-			image: product_details.imageUrl,
 			accesories: lenses.options[lenses.selectedIndex].text,
+			_id: product_details._id,
+			price: product_details.price,
 		});
 
 		location.href = "./panier.html";
