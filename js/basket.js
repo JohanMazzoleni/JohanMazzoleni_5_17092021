@@ -6,6 +6,11 @@ var formatter = new Intl.NumberFormat('fr-Fr', {
     minimumFractionDigits: 2
 })
 
+/**
+ * Récupère le panier
+ * @return { Object }
+*/
+
 function RetrieveBasket() {
     var basket_storage = localStorage.getItem("basket");
     if (basket_storage) {
@@ -16,6 +21,11 @@ function RetrieveBasket() {
     }
 }
 
+/**
+ * Calcul le total du panier
+ * @return { Integer }
+*/
+
 function GetTotalPrice(data) {
     var total = 0;
     for (let index = 0; index < data.length; index++) {
@@ -23,6 +33,11 @@ function GetTotalPrice(data) {
     }
     return total;
 }
+
+/**
+ * Génére la structure html avec les données de l'api.
+ * @param  { Object } data
+*/
 
 function GenerateBasket(data) {
     var code = ``
@@ -51,7 +66,7 @@ window.onload = function () {
 
     if (basket.length == 0)
     {
-        alert("Vous n'avez aucun produit dans votre panier");
+        alert("Vous n'avez aucun produit dans votre panier.");
         location.href = "./";
     }
 
