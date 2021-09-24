@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OriCamera | Panier</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css"
+        integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="./js/basket.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="./index.html" class="navbar-brand d-flex align-items-center">
+                    <i class="fas fa-camera-retro"></i>
+                    <strong class="header-title">OniCamera</strong>
+                </a>
+                <a class="basket" href="./panier.html" title="Panier">
+                    <i class="fas fa-shopping-basket"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h1>Onicamera Panier</h1>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mollis dui vitae ipsum
+                    ultrices, a vehicula risus feugiat. Curabitur a efficitur dui. Integer elit nisi, blandit eu tellus
+                    ut molestie.</p>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Your cart</span>
+                        <span id="total-product" class="badge bg-primary rounded-pill"></span>
+                    </h4>
+                    <ul id="basket" class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong id="total_price">$20</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Adresse de facturation</h4>
+                    <form id="final-form">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Nom de famille</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email </label>
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com"
+                                    required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">Adresse</label>
+                                <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                                    required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="city" class="form-label">Ville</label>
+                                <input type="text" class="form-control" id="city" placeholder="Paris" required>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Poursuivre l'achat</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
