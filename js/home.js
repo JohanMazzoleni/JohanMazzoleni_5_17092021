@@ -1,5 +1,10 @@
 const end_point = "http://localhost:3000/";
 
+/**
+ * Permet de transformer les Integers en format de prix français.
+ * @return { String }
+*/
+
 var formatter = new Intl.NumberFormat('fr-Fr', {
 	style: 'currency',
 	currency: 'EUR',
