@@ -55,8 +55,6 @@ window.onload = async function () {
 	try {
 		const product = await GetProduct();
 
-		console.log(product);
-
 		const list = document.getElementById("products");
 		for (let index = 0; index < product.length; index++) {
 			list.innerHTML += Generate_Card(product[index]);
