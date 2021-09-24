@@ -36,6 +36,7 @@ function Generate_Card(data) {
 			<img src="${data.imageUrl}" alt="${data.name}" title="${data.name}">
 
 			<div class="card-body">
+				<h2 class="card-text">${data.name}</h2>
 				<p class="card-text">${data.description}</p>
 				<div class="d-flex justify-content-between align-items-center">
 					<small class="text-muted">${formatter.format(data.price)}</small>
