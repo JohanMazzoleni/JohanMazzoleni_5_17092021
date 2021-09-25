@@ -14,18 +14,16 @@ var formatter = new Intl.NumberFormat('fr-Fr', {
  * @return { Promise }
 */
 
-async function getProducts() {
-	let products = [];
-	try {
-		const response = await fetch("http://localhost:3000/api/cameras");
-		if (response.ok) {
-			products = await response.json();
-		}
-	} catch (error) {
-		console.error(error);
-	}
-	return products;
-}
+function getProducts() {
+	return new Promise(function (resolve, reject) {
+		fetch("http://localhost:3000/api/cameras").then(async function (data) {
+			resolve(await data.json());
+		})
+			.catch(function (err) {
+				reject(err);
+			})
+	});
+};
 
 
 /**
