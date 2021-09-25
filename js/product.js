@@ -18,7 +18,7 @@ var formatter = new Intl.NumberFormat('fr-Fr', {
 
 function productDetail(id) {
 	return new Promise(function (resolve, reject) {
-		fetch(endpoint + "api/cameras/" + id).then(async function (data) {
+		fetch("http://localhost:3000/api/cameras/" + id).then(async function (data) {
 			resolve(await data.json());
 		})
 			.catch(function (err) {

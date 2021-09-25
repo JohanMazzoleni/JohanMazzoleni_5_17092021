@@ -1,5 +1,3 @@
-const end_point = "http://localhost:3000/";
-
 /**
  * Permet de transformer les Integers en format de prix français.
  * @return { String }
@@ -16,14 +14,13 @@ var formatter = new Intl.NumberFormat('fr-Fr', {
  * @return { Object }
 */
 
-function RetrieveBasket() {
-    var basket_storage = localStorage.getItem("basket");
+function retrieveBasket() {
+    const basket_storage = localStorage.getItem("basket");
     if (basket_storage) {
         return JSON.parse(basket_storage);
     }
-    else {
-        return [];
-    }
+    
+    return [];
 }
 
 /**
@@ -31,7 +28,7 @@ function RetrieveBasket() {
  * @return { Integer }
 */
 
-function GetTotalPrice(data) {
+function getTotalPrice(data) {
     var total = 0;
     for (let index = 0; index < data.length; index++) {
         total += data[index].price;
@@ -44,10 +41,10 @@ function GetTotalPrice(data) {
  * @param  { Object } data
 */
 
-function GenerateBasket(data) {
+function generateBasket(data) {
     var code = ``
     for (let index = 0; index < data.length; index++) {
-        code = code + `
+        code =+ `
         <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
                 <h6 class="my-0">${data[index].name}</h6>
@@ -62,11 +59,11 @@ function GenerateBasket(data) {
 
 
 
-window.onload = function () {
-    const basket = RetrieveBasket();
+window.addEventListener("DOMContentLoaded", async () => {
+    const basket = retrieveBasket();
     const basket_el = document.getElementById("basket");
     const total_price_el = document.getElementById("total_price");
-    const total_product_el = document.getElementById("total-product")
+    const total_product_el = document.getElementById("total-product");
     const form = document.getElementById("final-form");
 
     if (basket.length == 0)
@@ -76,20 +73,18 @@ window.onload = function () {
     }
 
     total_product_el.innerText = basket.length;
-    total_price_el.innerText = formatter.format(GetTotalPrice(basket));
-    basket_el.innerHTML = GenerateBasket(basket) + basket_el.innerHTML;
+    total_price_el.innerText = formatter.format(getTotalPrice(basket));
+    basket_el.innerHTML = generateBasket(basket) + basket_el.innerHTML;
 
     form.onsubmit = function (e) {
         e.preventDefault();
 
-        console.log(e);
-
-        var product_list = [];
+        var productList = [];
         for (let index = 0; index < basket.length; index++) {
-            product_list.push(basket[index]._id);
+            productList.push(basket[index]._id);
         }
 
-        fetch(end_point + "api/cameras/order", {
+        fetch("http://localhost:3000/api/cameras/order", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -103,7 +98,7 @@ window.onload = function () {
                     city: document.getElementById("city").value,
                     email: document.getElementById("email").value,
                 },
-                products: product_list,
+                products: productList,
             })
         }).then(async function(data)
         {
@@ -111,4 +106,4 @@ window.onload = function () {
             location.href = "./order.html?id=" + encodeURIComponent(json.orderId);
         })
     }
-};
+});
