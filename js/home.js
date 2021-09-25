@@ -17,7 +17,7 @@ var formatter = new Intl.NumberFormat('fr-Fr', {
  * @return { Promise }
 */
 
-function GetProduct() {
+function getProducts() {
 	return new Promise(async function (resolve, reject) {
 		fetch(end_point + "api/cameras").then(async function (data) {
 			resolve(await data.json());
@@ -34,7 +34,7 @@ function GetProduct() {
  * @param  { Object } data
 */
 
-function Generate_Card(data) {
+function generateCard(data) {
 	return `
 	<div class="col">
 		<div class="card shadow-sm">
@@ -58,11 +58,11 @@ function Generate_Card(data) {
 
 window.onload = async function () {
 	try {
-		const product = await GetProduct();
+		const product = await getProducts();
 
 		const list = document.getElementById("products");
 		for (let index = 0; index < product.length; index++) {
-			list.innerHTML += Generate_Card(product[index]);
+			list.innerHTML += generateCard(product[index]);
 		}
 	}
 	catch (err) {
