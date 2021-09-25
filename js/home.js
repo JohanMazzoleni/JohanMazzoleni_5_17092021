@@ -1,5 +1,3 @@
-const end_point = "http://localhost:3000/";
-
 /**
  * Permet de transformer les Integers en format de prix français.
  * @return { String }
@@ -11,27 +9,29 @@ var formatter = new Intl.NumberFormat('fr-Fr', {
 	minimumFractionDigits: 2
 })
 
-
 /**
  * Récupère les informations de l'api cameras
  * @return { Promise }
 */
 
-function getProducts() {
-	return new Promise(async function (resolve, reject) {
-		fetch(end_point + "api/cameras").then(async function (data) {
-			resolve(await data.json());
-		})
-			.catch(function (err) {
-				reject(err);
-			})
-	});
+async function getProducts() {
+	let products = [];
+	try {
+		const response = await fetch("http://localhost:3000/api/cameras");
+		if (response.ok) {
+			products = await response.json();
+		}
+	} catch (error) {
+		console.error(error);
+	}
+	return products;
 }
 
 
 /**
  * Génére la structure html avec les données de l'api.
  * @param  { Object } data
+ * @returns { String }
 */
 
 function generateCard(data) {
@@ -56,16 +56,16 @@ function generateCard(data) {
 };
 
 
-window.onload = async function () {
+window.addEventListener("DOMContentLoaded", async () => {
 	try {
-		const product = await getProducts();
-
+		const products = await getProducts();
 		const list = document.getElementById("products");
-		for (let index = 0; index < product.length; index++) {
-			list.innerHTML += generateCard(product[index]);
+
+		for (let index = 0; index < products.length; index++) {
+			list.innerHTML += generateCard(products[index]);
 		}
 	}
 	catch (err) {
 		console.log('err', err);
 	}
-};
+});
