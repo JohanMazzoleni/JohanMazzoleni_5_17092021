@@ -87,8 +87,8 @@ window.addEventListener("DOMContentLoaded", async () => {
         fetch("http://localhost:3000/api/cameras/order", {
             method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                "Accept": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 contact: {
