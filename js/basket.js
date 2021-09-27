@@ -44,7 +44,7 @@ function getTotalPrice(data) {
 function generateBasket(data) {
     var code = ``
     for (let index = 0; index < data.length; index++) {
-        code =+ `
+        code += `
         <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
                 <h6 class="my-0">${data[index].name}</h6>
